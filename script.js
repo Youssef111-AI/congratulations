@@ -1,23 +1,48 @@
-window.onload = function () {
-  const left = document.querySelector('.card-left');
-  const right = document.querySelector('.card-right');
-  const cardContainer = document.getElementById('cardContainer');
-  const content = document.getElementById('content');
+// Initialize audio
+const sound = new Howl({
+    src: ['assets/audio/romantic-bg.mp3'],
+    loop: true,
+    volume: 0.5,
+});
 
-  // بعد ثانيتين من فتح الموقع يبدأ الكارت يفتح تلقائي
-  setTimeout(() => {
-    left.style.transform = 'rotateY(-90deg)';
-    right.style.transform = 'rotateY(90deg)';
-  }, 1000);
+// Animation timeline
+const tl = gsap.timeline({ paused: true });
 
-  // بعد الأنيميشن يتم إخفاء الكارت وعرض المحتوى
-  setTimeout(() => {
-    cardContainer.style.display = 'none';
-    content.style.display = 'block';
-    content.style.opacity = 0;
-    setTimeout(() => {
-      content.style.transition = 'opacity 1s';
-      content.style.opacity = 1;
-    }, 100);
-  }, 3200);
+// Card opening animation
+tl.to('.card', { duration: 0, addClass: 'open' })
+  .to('.content', { duration: 0, className: 'content show' }, '-=0')
+  .to('.groom-img', { opacity: 1, duration: 1 }, '-=0.5')
+  .to('.bride-img', { opacity: 1, duration: 1 }, '-=0.8')
+  .to('.ring-img', { opacity: 1, duration: 1, scale: 1.2, repeat: 1, yoyo: true }, '-=0.8')
+  .to('.message', { opacity: 1, duration: 1 }, '-=0.5')
+  .to('.replay-btn', { opacity: 1, duration: 0.5 }, '-=0.5');
+
+// Lottie animations
+const loadLottie = (id, path) => {
+    lottie.loadAnimation({
+        container: document.getElementById(id),
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        path: `assets/lottie/${path}.json`,
+    }).play();
 };
+
+// Load particle animations
+loadLottie('hearts', 'hearts');
+loadLottie('flowers', 'flowers');
+loadLottie('butterflies', 'butterflies');
+
+// Play animation and audio on load
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        tl.play();
+        sound.play();
+    }, 1500);
+});
+
+// Replay button
+document.querySelector('.replay-btn').addEventListener('click', () => {
+    tl.restart();
+    sound.stop().play();
+});
