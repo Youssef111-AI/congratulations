@@ -5,13 +5,13 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #f7e4e4, #fff);
+    background: linear-gradient(to bottom, #ffe4e9, #fff1f5);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Amiri', serif;
 }
 
 .invitation-container {
@@ -39,13 +39,13 @@ body {
 }
 
 .card-front {
-    background: url('https://via.placeholder.com/600x400.png?text=Invitation+Cover') center/cover;
+    background: url('https://via.placeholder.com/600x400.png?text=ذكرى+حبنا') center/cover;
     transform: rotateY(0deg);
 }
 
 .card-inside-left, .card-inside-right {
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #f8b8c6;
 }
 
 .card-inside-left {
@@ -89,14 +89,15 @@ body {
     border-radius: 10px;
     position: absolute;
     opacity: 0;
+    filter: drop-shadow(0 0 10px rgba(233, 30, 99, 0.3));
 }
 
 .groom-img {
-    left: 50px;
+    right: 50px;
 }
 
 .bride-img {
-    right: 50px;
+    left: 50px;
 }
 
 .ring-img {
@@ -107,14 +108,37 @@ body {
     opacity: 0;
 }
 
+.heart-pulse {
+    width: 60px;
+    height: 60px;
+    background: url('https://via.placeholder.com/60x60.png?text=قلب') center/contain;
+    position: absolute;
+    top: 30%;
+    opacity: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
 .message {
     position: absolute;
     bottom: 50px;
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 1.8rem;
+    color: #a51140;
     text-align: center;
     width: 80%;
     opacity: 0;
+}
+
+.anniversary-date {
+    font-size: 1.2rem;
+    color: #555;
+    display: block;
+    margin-top: 10px;
 }
 
 .particle {
@@ -126,10 +150,9 @@ body {
     pointer-events: none;
 }
 
-.replay-btn {
+.replay-btn, .share-btn {
     position: absolute;
     bottom: 20px;
-    right: 20px;
     padding: 10px 20px;
     background: #e91e63;
     color: #fff;
@@ -137,13 +160,22 @@ body {
     border-radius: 5px;
     cursor: pointer;
     opacity: 0;
+    font-family: 'Amiri', serif;
 }
 
-.replay-btn.show {
+.replay-btn {
+    left: 20px;
+}
+
+.share-btn {
+    left: 120px;
+}
+
+.replay-btn.show, .share-btn.show {
     opacity: 1;
 }
 
-/* Mobile Responsiveness */
+/* التجاوب مع الجوال */
 @media (max-width: 600px) {
     .card {
         width: 90%;
@@ -156,19 +188,28 @@ body {
     }
 
     .groom-img {
-        left: 10px;
+        right: 10px;
     }
 
     .bride-img {
-        right: 10px;
+        left: 10px;
     }
 
     .ring-img {
         width: 60px;
     }
 
+    .heart-pulse {
+        width: 40px;
+        height: 40px;
+    }
+
     .message {
-        font-size: 1rem;
+        font-size: 1.2rem;
         bottom: 30px;
+    }
+
+    .anniversary-date {
+        font-size: 0.9rem;
     }
 }
