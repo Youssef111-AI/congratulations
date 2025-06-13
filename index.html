@@ -1,36 +1,34 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>تهنئة للعروسين</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<!-- أنيميشن كارت بيتفتح -->
-<div class="card-container" id="cardContainer">
-  <div class="card-outer">
-    <div class="card-left"></div>
-    <div class="card-right"></div>
-    <div class="card-message">💌 تهنئة خاصة</div>
-  </div>
-</div>
-
-<!-- المحتوى الأساسي بعد فتح الكارت -->
-<div class="content" id="content">
-  <div class="hearts">❤️💖💗💘💞</div>
-  <div class="photos">
-    <img src="images/ariss.jpg" class="photo" alt="العريس">
-    <img src="images/ring.png" class="ring" alt="الخاتم">
-    <img src="images/arousa.jpg" class="photo" alt="العروسة">
-  </div>
-  <div class="message">
-    <h2>ألف مبروك 🎉</h2>
-    <p>ربنا يسعدكم ويتمم بخير، ويجعل حياتكم كلها حب وفرحة ورضا ❤️</p>
-  </div>
-</div>
-
-<script src="script.js"></script>
+    <div class="invitation-container">
+        <div class="card">
+            <div class="card-front"></div>
+            <div class="card-inside-left"></div>
+            <div class="card-inside-right"></div>
+        </div>
+        <div class="content hidden">
+            <img src="assets/images/groom.jpg" alt="Groom" class="groom-img">
+            <img src="assets/images/ring.png" alt="Ring" class="ring-img">
+            <img src="assets/images/bride.jpg" alt="Bride" class="bride-img">
+            <div class="message">
+                Wishing you a lifetime of love, laughter, and happiness together!
+            </div>
+            <div id="hearts" class="particle"></div>
+            <div id="flowers" class="particle"></div>
+            <div id="butterflies" class="particle"></div>
+        </div>
+        <button class="replay-btn">Replay</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
