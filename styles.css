@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, #ffe4e9, #fff1f5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.welcome-message {
+    position: absolute;
+    top: 20px;
+    font-size: 1.5rem;
+    color: #a51140;
+    text-align: center;
+}
+
+.invitation-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.card-front, .card-inside-left, .card-inside-right {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 1s ease;
+}
+
+.card-front {
+    background: url('https://via.placeholder.com/600x400.png?text=مبروك+الزفاف') center/cover;
+    transform: rotateY(0deg);
+}
+
+.card-inside-left, .card-inside-right {
+    background: #fff;
+    border: 1px solid #f8b8c6;
+}
+
+.card-inside-left {
+    transform: rotateY(-180deg);
+}
+
+.card-inside-right {
+    transform: rotateY(180deg);
+}
+
+.card.open .card-front {
+    transform: rotateY(-180deg);
+}
+
+.card.open .card-inside-left {
+    transform: rotateY(0deg);
+}
+
+.card.open .card-inside-right {
+    transform: rotateY(0deg);
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.card.open ~ .content {
+    opacity: 1;
+}
+
+.groom-img, .bride-img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    position: absolute;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 1s;
+    filter: drop-shadow(0 0 10px rgba(233, 30, 99, 0.3));
+}
+
+.groom-img {
+    right: 50px;
+}
+
+.bride-img {
+    left: 50px;
+}
+
+.ring-img {
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards, glow 2s infinite;
+    animation-delay: 1.2s;
+}
+
+.heart-pulse {
+    width: 60px;
+    height: 60px;
+    background: url('https://via.placeholder.com/20x20.png?text=❤️') center/contain;
+    position: absolute;
+    top: 30%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards, pulse 2s infinite;
+    animation-delay: 1s;
+}
+
+.message {
+    position: absolute;
+    bottom: 50px;
+    font-size: 1.8rem;
+    color: #a51140;
+    text-align: center;
+    width: 80%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 1.5s;
+}
+
+.anniversary-date {
+    font-size: 1.2rem;
+    color: #555;
+    display: block;
+    margin-top: 10px;
+}
+
+.hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('https://via.placeholder.com/20x20.png?text=❤️') center/contain;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glow {
+    0% { filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5)); }
+    50% { filter: drop-shadow(0 0 15px rgba(233, 30, 99, 1)); }
+    100% { filter: drop-shadow(0 0 5px rgba(233, 30, 99, 0.5)); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.replay-btn, .share-btn {
+    position: absolute;
+    bottom: 20px;
+    padding: 10px 20px;
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    animation-delay: 2s;
+}
+
+.replay-btn {
+    left: 20px;
+}
+
+.share-btn {
+    left: 120px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 90%;
+        height: 60vw;
+    }
+    .groom-img, .bride-img {
+        width: 100px;
+        height: 150px;
+    }
+    .groom-img {
+        right: 10px;
+    }
+    .bride-img {
+        left: 10px;
+    }
+    .ring-img {
+        width: 60px;
+    }
+    .heart-pulse {
+        width: 40px;
+        height: 40px;
+    }
+    .message {
+        font-size: 1.2rem;
+    }
+    .anniversary-date {
+        font-size: 0.9rem;
+    }
+    .welcome-message {
+        font-size: 1rem;
+    }
+}
