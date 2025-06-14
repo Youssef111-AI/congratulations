@@ -7,32 +7,37 @@ body, html {
   background-color: #000;
 }
 
-/* الكارت في البداية */
-.card-opening {
+/* Background card stays full-screen */
+.card-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 90vw;
-  max-width: 700px;
   transform: translate(-50%, -50%);
-  z-index: 10;
-  animation: openCard 3s ease-in-out forwards;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
 }
 
-@keyframes openCard {
-  0% { transform: translate(-50%, -50%) scale(0.8) rotateX(90deg); opacity: 0; }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.0) rotateX(0deg); }
-  100% { opacity: 1; }
-}
-
-/* اللوجو يظهر بعد الكارت */
+/* Logo in center top with animation */
 .logo {
   position: absolute;
-  top: 5%;
-  right: 8%;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
   width: 120px;
-  z-index: 5;
   opacity: 0;
-  transform: scale(0.5);
-  transition: all 1.5s ease;
+  z-index: 2;
+  animation: fadeInLogo 2s ease-out 2s forwards;
+}
+
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
 }
