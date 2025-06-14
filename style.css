@@ -1,0 +1,88 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000;
+}
+
+.background {
+  background-image: url('https://res.cloudinary.com/dwhkjr77b/image/upload/v1749937977/142653-OTN30F-720_nook58.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  animation: zoomIn 10s ease-out forwards;
+  z-index: 1;
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.card-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  max-width: 700px;
+  z-index: 3;
+  animation: fadeInCard 3s ease forwards;
+}
+
+@keyframes fadeInCard {
+  0% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.logo {
+  position: absolute;
+  top: 5%;
+  right: 8%;
+  width: 100px;
+  z-index: 4;
+  animation: logoIntro 2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes logoIntro {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.content {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  border-radius: 16px;
+  z-index: 2;
+  animation: fadeIn 4s ease 2s forwards;
+  opacity: 0;
+}
+
+.content h1 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.content p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.names {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
